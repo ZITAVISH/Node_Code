@@ -1,6 +1,6 @@
 var ibmdb = require('ibm_db');
 let result;
-module.exports.connect=(matcher)=>{
+module.exports.connect=function(matcher){
 ibmdb.open("DATABASE=TEST;HOSTNAME=localhost;UID=ROUNAK;PWD=Farcry@5;PORT=50000;PROTOCOL=TCPIP", function (err,conn) {
   if (err) return console.log(err);
   let value=matcher;
@@ -8,7 +8,6 @@ ibmdb.open("DATABASE=TEST;HOSTNAME=localhost;UID=ROUNAK;PWD=Farcry@5;PORT=50000;
   conn.query(queryst, function (err, data) {
     if (err) console.log(err);
     else {
-    console.log(data);
     result=data;
     }
     conn.close(function () {
